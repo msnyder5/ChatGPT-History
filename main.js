@@ -10,16 +10,6 @@
 // @grant        none
 // ==/UserScript==
 
-
-// THIS SAVES 1 MESSAGE IN THE PAST.
-// If you want to save all of your history, give ChatGPT a trash prompt before saving.
-
-
-// This script is very bad, but it works. I might try to make it more user friendly in the future.
-// Saving and loading is done from developer console.
-// To save: Call saveChatGPT(); from console. Copy the information it gives you.
-// To load: Call the function given to you by saveChatGPT, i.e. loadChatGPT(conversationID, parentID);
-
 let lastConversationId = undefined;
 let lastParentMessageId = undefined;
 let loadConversationId = undefined;
