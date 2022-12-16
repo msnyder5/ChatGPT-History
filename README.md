@@ -1,11 +1,9 @@
-# ChatGPT-History
-Save and Load ChatGPT Conversations.
+## ChatGPT-History
+# **Note that this won't actually save any of the chatlogs, just the conversation state.**
 
-ChatGPT is soon to add their own functionality to save chats, but thought I'd share this in the meantime.
+Save and Load ChatGPT Conversations. ChatGPT is soon to add their own functionality to save chats, but thought I'd share this in the meantime. Also, this should be able to work in any browser, but I've only tested in on Opera (chromium based).
 
-**Note that this won't actually save any of the chatlogs, just the conversation state.** Also, this should be able to work in any browser, but I've only tested in on Opera (chromium based).
-
-# Instructions
+## Instructions
 
 To install, you will need a userscript loader, such as [tampermonkey](https://www.tampermonkey.net/). Simply create a new script, and paste `main.js`.
 
