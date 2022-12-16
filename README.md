@@ -7,6 +7,6 @@ Save and Load ChatGPT Conversations. ChatGPT is soon to add their own functional
 
 To install, you will need a userscript loader, such as [tampermonkey](https://www.tampermonkey.net/). Simply create a new script, and paste `main.js`.
 
-To save, first enter the name for the chat in the bottom textbox. An empty textbox will result in chat being named 'Unnamed Chat'. Clicking the save button next to the like/dislike buttons saves the chat.
+To save, first enter the name for the chat in the bottom textbox. An empty textbox will result in chat being named 'Unnamed Chat'. Clicking the save button next to the like/dislike buttons saves the chat. You can't save the most recent message due to limitations with my methodology.
 
 To load, click the new load button on the lefthand side of the screen. It won't look like it did anything, but your next chat will resume from the save point.
