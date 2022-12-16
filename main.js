@@ -22,7 +22,7 @@ initDBRequest.onsuccess = function() {
     let store = transaction.objectStore('chats');
     let getAllRequest = store.getAll();
     getAllRequest.onsuccess = function () {
-        setTimeout(() => {getAllRequest.result.forEach((chat) => {addLoadButton(chat)})}, 1000);
+        setTimeout(() => {getAllRequest.result.forEach((chat) => {addLoadButton(chat)})}, 2000);
     }
 };
 initDBRequest.onupgradeneeded = function() {
@@ -41,19 +41,28 @@ let saveButton = createElementFromString('<button class="p-1 rounded-md hover:bg
 function addLoadButton(chat) {
     let seperator = document.querySelector('#__next > div.overflow-hidden.w-full.h-full.relative > div.hidden.bg-gray-900 > div > div > nav > div');
     let name = chat.name;
-    let loadButton = createElementFromString(`<a class="flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm mb-2 flex-shrink-0 border border-white/20"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/><path fill="none" d="M0 0h24v24H0z"/></svg>${chat.name}</a>`);
-    seperator.prepend(loadButton);
+    let loadButton = createElementFromString(`<a class="flex mr-1 flex-1 py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm mb-2 flex-shrink-0 border border-white/20"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/><path fill="none" d="M0 0h24v24H0z"/></svg>${chat.name}</a>`);
+    let deleteButton = createElementFromString('<a class="flex ml-1 py-3 px-3 items-center justify-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm mb-2 border border-white/20"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM8 9H16V19H8V9ZM15.5 4L14.5 3H9.5L8.5 4H5V6H19V4H15.5Z" fill="#212121"/></svg></a>')
+    let buttonContainer = createElementFromString('<div class="flex flex-row"></div>')
+    buttonContainer.appendChild(loadButton);
+    buttonContainer.appendChild(deleteButton);
+    seperator.appendChild(buttonContainer);
     loadButton.addEventListener("click", () => {
         loadConversationId = chat.conversation_id;
         loadParentMessageId = chat.parent_message_id;
     });
+    deleteButton.addEventListener("dblclick", () => {
+        seperator.removeChild(buttonContainer);
+        deleteChat(chat);
+    });
 }
 
 function saveChat(name, date, conversation_id, parent_message_id) {
+    console.log([name, date, conversation_id, parent_message_id]);
     let openDBRequest = indexedDB.open("ChatGPTHistory", 1);
     openDBRequest.onsuccess = function() {
         let db = openDBRequest.result;
-        let transaction = db.transaction(["chats"], "readwrite");
+        let transaction = db.transaction(['chats'], "readwrite");
         let store = transaction.objectStore('chats');
         if (name === '') {
             name = 'Unnamed Chat';
@@ -66,6 +75,16 @@ function saveChat(name, date, conversation_id, parent_message_id) {
         }
         store.add(chat);
         addLoadButton(chat);
+    };
+}
+
+function deleteChat(chat) {
+    let openDBRequest = indexedDB.open("ChatGPTHistory", 1);
+    openDBRequest.onsuccess = function() {
+        let db = openDBRequest.result;
+        let transaction = db.transaction(['chats'], "readwrite");
+        let store = transaction.objectStore('chats');
+        store.delete(chat.date);
     };
 }
 
