@@ -60,7 +60,6 @@ function addLoadButton(chat) {
 }
 
 function saveChat(name, date, conversation_id, parent_message_id) {
-    console.log([name, date, conversation_id, parent_message_id]);
     let openDBRequest = indexedDB.open("ChatGPTHistory", 1);
     openDBRequest.onsuccess = function() {
         let db = openDBRequest.result;
