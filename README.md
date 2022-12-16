@@ -5,7 +5,7 @@ ChatGPT is soon to add their own functionality to save chats, but thought I'd sh
 
 # Instructions
 
-To install, you will need a userscript loader, such as [tampermonkey](https://www.tampermonkey.net/). Simply create a new script, and paste in `main.js`.
+To install, you will need a userscript loader, such as [tampermonkey](https://www.tampermonkey.net/). Simply create a new script, and paste `main.js`.
 
 To save, first enter the name for the chat in the bottom textbox. Empty box will result in chat being named 'Unnamed Chat'. Clicking the save button next to the like/dislike buttons saves the chat.
 
