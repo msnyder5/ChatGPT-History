@@ -1,5 +1,5 @@
 # ChatGPT-History
-### **Note that this won't actually save any chatlogs, just the conversation state.**
+**Note that this won't actually save any chatlogs, just the conversation state so you can resume the conversation.**
 
 Save and Load ChatGPT Conversations. ChatGPT is soon to add their own functionality to save chats, but thought I'd share this in the meantime. Should be able to work in any browser, but I've only tested in on Opera (chromium based).
 
