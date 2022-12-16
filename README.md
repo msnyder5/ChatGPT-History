@@ -1,5 +1,6 @@
 # ChatGPT-History
 Save and Load ChatGPT Conversations.
+
 ChatGPT is soon to add their own functionality to save chats, but thought I'd share this in the meantime.
 
 # Instructions
