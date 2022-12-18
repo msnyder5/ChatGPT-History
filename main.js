@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatGPT History.
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Save and load ChatGPT Threads.
 // @author       Snipes
 // @require 	 https://jpillora.com/xhook/dist/xhook.js
